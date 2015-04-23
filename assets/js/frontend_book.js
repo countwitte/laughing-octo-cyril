@@ -433,7 +433,8 @@ var FrontendBook = {
 
         // Customer Details
         $('#customer-details').html(
-            '<h4>' + $('#first-name').val() + ' ' + $('#last-name').val() + '</h4>' + 
+        	'<h4>' + $('#participant-id').val() + '<br/>' +
+            $('#first-name').val() + ' ' + $('#last-name').val() + '</h4>' + 
             '<p>' + 
             	EALang['phone'] + ': ' + $('#phone-number').val() + 
             	'<br/>' + 
@@ -458,7 +459,9 @@ var FrontendBook = {
             'phone_number': $('#phone-number').val(),
             'address': $('#address').val(),
             'city': $('#city').val(),
-            'zip_code': $('#zip-code').val()
+            'zip_code': $('#zip-code').val(),
+            // added fields
+            'participant_id': $('#participant-id').val()
         };
         
         postData['appointment'] = {
@@ -534,6 +537,7 @@ var FrontendBook = {
             FrontendBook.getAvailableHours($('#select-date').val());
             
             // Apply Customer's Data
+            $('#participant-id').val(customer['participant_id']);
             $('#last-name').val(customer['last_name']);
             $('#first-name').val(customer['first_name']);
             $('#email').val(customer['email']);

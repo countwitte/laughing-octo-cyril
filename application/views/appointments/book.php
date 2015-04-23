@@ -285,6 +285,9 @@
                     
                     <div class="frame-content" style="width:600px">
                         <div class="span3">
+                            <label for="participant-id"><?php echo $this->lang->line('participant_id'); ?> *</label>
+                            <input type="text" id="participant-id" maxlength="60" />
+                            
                             <label for="first-name"><?php echo $this->lang->line('first_name'); ?> *</label>
                             <input type="text" id="first-name" class="required" maxlength="100" />
                             
