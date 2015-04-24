@@ -286,7 +286,7 @@
                     <div class="frame-content" style="width:600px">
                         <div class="span3">
                             <label for="participant-id"><?php echo $this->lang->line('participant_id'); ?> *</label>
-                            <input type="text" id="participant-id" maxlength="60" />
+                            <input type="text" id="participant-id" class="required" maxlength="60" />
                             
                             <label for="first-name"><?php echo $this->lang->line('first_name'); ?> *</label>
                             <input type="text" id="first-name" class="required" maxlength="100" />
@@ -294,8 +294,8 @@
                             <label for="last-name"><?php echo $this->lang->line('last_name'); ?> *</label>
                             <input type="text" id="last-name" class="required" maxlength="250" />
 
-                            <label for="email"><?php echo $this->lang->line('email'); ?> *</label>
-                            <input type="text" id="email" class="required" maxlength="250" />
+                            <label for="email"><?php echo $this->lang->line('email'); ?></label>
+                            <input type="text" id="email" maxlength="250" />
 
                             <label for="phone-number"><?php echo $this->lang->line('phone_number'); ?> *</label>
                             <input type="text" id="phone-number" class="required" maxlength="60" />
@@ -327,7 +327,7 @@
                     </button>
                     <button type="button" id="button-next-3" class="btn button-next btn-primary" 
                             data-step_index="3">
-                        <?php echo $this->lang->line('next'); ?>
+                        <?php echo $this->lang->line('next'); ?>	
                         <i class="icon-forward icon-white"></i>
                     </button>
                 </div>

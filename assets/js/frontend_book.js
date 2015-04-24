@@ -385,11 +385,11 @@ var FrontendBook = {
                 throw EALang['fields_are_required'];
             }
             
-            // Validate email address.
-            if (!GeneralFunctions.validateEmail($('#email').val())) {
-                $('#email').css('border', '2px solid red');
-                throw EALang['invalid_email'];
-            }
+            // Validate email address. - commented out to remove email address in form later 24-04-15
+            //if (!GeneralFunctions.validateEmail($('#email').val())) {
+            //    $('#email').css('border', '2px solid red');
+            //    throw EALang['invalid_email'];
+            //}
             
             return true;
         } catch(exc) {

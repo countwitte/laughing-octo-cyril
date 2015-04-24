@@ -23,7 +23,7 @@ class Customers_Model extends CI_Model {
         // Validate the customer data before doing anything.
         $this->validate($customer);
         
-        // :: CHECK IF CUSTOMER ALREADY EXIST (FROM EMAIL).	
+        // :: CHECK IF CUSTOMER ALREADY EXIST (FROM PARTICIPANT ID).	
         if ($this->exists($customer) && !isset($customer['id'])) {
         	// Find the customer id from the database.
         	$customer['id'] = $this->find_record_id($customer);
@@ -44,15 +44,15 @@ class Customers_Model extends CI_Model {
      * 
      * This method checks wether the given customer already exists in 
      * the database. It doesn't search with the id, but with the following
-     * fields: "email"
+     * fields: "participant ID"
      * 
      * @param array $customer Associative array with the customer's 
      * data. Each key has the same name with the database fields.
      * @return bool Returns wether the record exists or not.
      */
     public function exists($customer) {
-        if (!isset($customer['email'])) {
-            throw new Exception('Customer\'s email is not provided.');
+        if (!isset($customer['participant_id'])) {
+            throw new Exception('Participant\'s ID is not provided.');
         }
         
         // This method shouldn't depend on another method of this class.
@@ -60,7 +60,7 @@ class Customers_Model extends CI_Model {
                 ->select('*')
                 ->from('ea_users')
                 ->join('ea_roles', 'ea_roles.id = ea_users.id_roles', 'inner')
-                ->where('ea_users.email', $customer['email'])
+                ->where('ea_users.participant_id', $customer['participant_id'])
                 ->where('ea_roles.slug', DB_SLUG_CUSTOMER)
                 ->get()->num_rows();
         
@@ -121,7 +121,7 @@ class Customers_Model extends CI_Model {
      * Find the database id of a customer record. 
      * 
      * The customer data should include the following fields in order to 
-     * get the unique id from the database: "email"
+     * get the unique id from the database: "participant_id"
      * 
      * <strong>IMPORTANT!</strong> The record must already exists in the 
      * database, otherwise an exception is raised.
@@ -131,8 +131,8 @@ class Customers_Model extends CI_Model {
      * @return int Returns the id.
      */
     public function find_record_id($customer) {
-        if (!isset($customer['email'])) {
-            throw new Exception('Customer\'s email was not provided : ' 
+        if (!isset($customer['participant_id'])) {
+            throw new Exception('Participant\'s ID was not provided : ' 
                     . print_r($customer, TRUE));
         }
         
@@ -141,7 +141,7 @@ class Customers_Model extends CI_Model {
                 ->select('ea_users.id')
                 ->from('ea_users')
                 ->join('ea_roles', 'ea_roles.id = ea_users.id_roles', 'inner')
-                ->where('ea_users.email', $customer['email'])
+                ->where('ea_users.participant_id', $customer['participant_id'])
                 ->where('ea_roles.slug', DB_SLUG_CUSTOMER)
                 ->get();
         
@@ -173,19 +173,19 @@ class Customers_Model extends CI_Model {
         }
         // Validate required fields
         if (!isset($customer['last_name'])
-                || !isset($customer['email'])
+        		|| !isset($customer['participant_id'])
                 || !isset($customer['phone_number'])) { 
             throw new Exception('Not all required fields are provided : ' 
                     . print_r($customer, TRUE));
         }
 
         // Validate email address
-        if (!filter_var($customer['email'], FILTER_VALIDATE_EMAIL)) {
-            throw new Exception('Invalid email address provided : ' 
-                    . $customer['email']);
-        }
+        //if (!filter_var($customer['email'], FILTER_VALIDATE_EMAIL)) {
+        //    throw new Exception('Invalid email address provided : ' 
+        //            . $customer['email']);
+        //}
         
-        // When inserting a record the email address must be unique.
+        // When inserting a record the participant_id address must be unique.
         $customer_id = (isset($customer['id'])) ? $customer['id'] : '';
         
         $num_rows = $this->db
@@ -193,14 +193,14 @@ class Customers_Model extends CI_Model {
                 ->from('ea_users')
                 ->join('ea_roles', 'ea_roles.id = ea_users.id_roles', 'inner')
                 ->where('ea_roles.slug', DB_SLUG_CUSTOMER)
-                ->where('ea_users.email', $customer['email'])
+                ->where('ea_users.participant_id', $customer['participant_id'])
                 ->where('ea_users.id <>', $customer_id)
                 ->get()
                 ->num_rows();
         
         if ($num_rows > 0) {
-            throw new Exception('Given email address belongs to another customer record. ' 
-                    . 'Please use a different email.');
+            throw new Exception('Given participant ID belongs to another customer record. ' 
+                    . 'Please check the participant ID.');
         }
 
         return TRUE;
