@@ -91,18 +91,21 @@
             <label for="email"><?php echo $this->lang->line('email'); ?> *</label>
             <input type="text" id="email" class="span11 required" />
 
-            <label for="phone-number"><?php echo $this->lang->line('phone_number'); ?> *</label>
-            <input type="text" id="phone-number" class="span11 required" />
+            <label for="number-of-calls"><?php echo $this->lang->line('Number_of_calls'); ?> *</label>
+            <input type="text" id="number-of-calls" class="span11 required" />
             
-            <label for="address"><?php echo $this->lang->line('address'); ?></label>
-            <input type="text" id="address" class="span11" />
+            <label for="appointment-scheduled"><?php echo $this->lang->line('Appointment_scheduled'); ?></label>
+            <input type="checkbox" id="appointment-scheduled" value="1" checked />
 
-            <label for="city"><?php echo $this->lang->line('city'); ?></label>
-            <input type="text" id="city" class="span11" />
+            <label for="device-delivered"><?php echo $this->lang->line('Device_delivered'); ?></label>
+            <input type="text" id="device-delivered" class = "span11" />
 
-            <label for="zip-code"><?php echo $this->lang->line('zip_code'); ?></label>
-            <input type="text" id="zip-code" class="span11" />
-
+			<label for="device-recovered"><?php echo $this->lang->line('Device_recovered'); ?></label>
+            <input type="text" id="device-recovered" class = "span11" />
+							
+			<label for="data-uploaded"><?php echo $this->lang->line('Data_uploaded'); ?></label>
+            <input type="text" id="data-uploaded" class = "span11" />
+            
             <label for="notes"><?php echo $this->lang->line('notes'); ?></label>
             <textarea id="notes" rows="4" class="span11"></textarea>
             

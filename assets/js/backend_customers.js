@@ -173,11 +173,14 @@ CustomersHelper.prototype.bindEventHandlers = function() {
             'first_name': $('#first-name').val(),
             'last_name': $('#last-name').val(),
             'email': $('#email').val(),
-            'phone_number': $('#phone-number').val(),
-            'address': $('#address').val(),
-            'city': $('#city').val(),
-            'zip_code': $('#zip-code').val(),
-            'notes': $('#notes').val()
+            'notes': $('#notes').val(),
+            // added fields
+            'Number_of_calls': $('#number-of-calls').val(),
+            'Appointment_scheduled': $('#appointment-scheduled').val(),
+            'Device_delivered': $('#device-delivered').val(),
+            'Device_recovered': $('#device-recovered').val(),
+            'Data_uploaded': $('#data-uploaded').val(),
+            'participant_id': $('#participant-id').val()
         };
 
         if ($('#customer-id').val() != '') {
@@ -318,13 +321,15 @@ CustomersHelper.prototype.resetForm = function() {
  */
 CustomersHelper.prototype.display = function(customer) {
     $('#customer-id').val(customer.id);
+    $('#participant-id').val(customer.participant_id);
     $('#first-name').val(customer.first_name);
     $('#last-name').val(customer.last_name);
     $('#email').val(customer.email);
-    $('#phone-number').val(customer.phone_number);
-    $('#address').val(customer.address);
-    $('#city').val(customer.city);
-    $('#zip-code').val(customer.zip_code);
+    $('#number-of-calls').val(customer.Number_of_calls);
+    //$('#appointment_scheduled').val(customer.email);
+    $('#device-delivered').val(customer.Device_delivered);
+    $('#device-recovered').val(customer.Device_recovered);
+    $('#data-uploaded').val(customer.Data_uploaded);
     $('#notes').val(customer.notes);
 
     $('#customer-appointments').data('jsp').destroy();

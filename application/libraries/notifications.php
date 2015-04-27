@@ -80,8 +80,8 @@ class Notifications {
             
             '$customer_name'            => $customer_data['first_name'] . ' ' . $customer_data['last_name'],
             '$customer_email'           => $customer_data['email'],
-            '$customer_phone'           => $customer_data['phone_number'],
-            '$customer_address'         => $customer_data['address'],
+            //'$customer_phone'           => $customer_data['phone_number'],
+            //'$customer_address'         => $customer_data['address'],
             
             // Translations
             'Appointment Details' => $this->ci->lang->line('appointment_details_title'),
@@ -152,8 +152,8 @@ class Notifications {
             '$company_name'         => $company_settings['company_name'],
             '$customer_name'        => $customer_data['first_name'] . ' ' . $customer_data['last_name'],
             '$customer_email'       => $customer_data['email'],
-            '$customer_phone'       => $customer_data['phone_number'],
-            '$customer_address'     => $customer_data['address'],
+            //'$customer_phone'       => $customer_data['phone_number'],
+            //'$customer_address'     => $customer_data['address'],
             '$reason'               => $reason,
             
             // Translations

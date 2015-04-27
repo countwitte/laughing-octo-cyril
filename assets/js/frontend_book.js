@@ -426,7 +426,7 @@ var FrontendBook = {
         		+ '<strong class="text-info">' 
                     + $('#select-provider option:selected').text() + '<br>'
         			+ selectedDate + ' ' +  $('.selected-hour').text() 
-                    + servicePrice + ' ' + serviceCurrency
+                    //+ servicePrice + ' ' + serviceCurrency
     			+ '</strong>' + 
             '</p>'
         );
@@ -436,15 +436,15 @@ var FrontendBook = {
         	'<h4>' + $('#participant-id').val() + '<br/>' +
             $('#first-name').val() + ' ' + $('#last-name').val() + '</h4>' + 
             '<p>' + 
-            	EALang['phone'] + ': ' + $('#phone-number').val() + 
+            	EALang['Number_of_calls'] + ': ' + $('#number-of-calls').val() + 
             	'<br/>' + 
-            	EALang['email'] + ': ' + $('#email').val() + 
+            	EALang['Appointment_scheduled'] + ': ' + $('#appointment-scheduled').val() + 
             	'<br/>' + 
-            	EALang['address'] + ': ' + $('#address').val() + 
+            	EALang['Device_delivered'] + ': ' + $('#device-delivered').val() + 
             	'<br/>' + 
-            	EALang['city'] + ': ' + $('#city').val() + 
+            	EALang['Device_recovered'] + ': ' + $('#device-recovered').val() + 
             	'<br/>' + 
-            	EALang['zip_code'] + ': ' + $('#zip-code').val() + 
+            	EALang['Data_uploaded'] + ': ' + $('#data-uploaded').val() + 
         	'</p>'
         );
             
@@ -456,10 +456,11 @@ var FrontendBook = {
             'last_name': $('#last-name').val(),
             'first_name': $('#first-name').val(),
             'email': $('#email').val(),
-            'phone_number': $('#phone-number').val(),
-            'address': $('#address').val(),
-            'city': $('#city').val(),
-            'zip_code': $('#zip-code').val(),
+            'Number_of_calls': $('#number-of-calls').val(),
+            'Appointment_scheduled': $('#appointment-scheduled').val(),
+            'Device_delivered': $('#device-delivered').val(),
+            'Device_recovered': $('#device-recovered').val(),
+            'Data_uploaded': $('#data-uploaded').val(),
             // added fields
             'participant_id': $('#participant-id').val()
         };
@@ -541,10 +542,11 @@ var FrontendBook = {
             $('#last-name').val(customer['last_name']);
             $('#first-name').val(customer['first_name']);
             $('#email').val(customer['email']);
-            $('#phone-number').val(customer['phone_number']);
-            $('#address').val(customer['address']);
-            $('#city').val(customer['city']);
-            $('#zip-code').val(customer['zip_code']);
+            $('#number-of-calls').val(customer['Number_of_calls']);
+            $('#appointment-scheduled').val(customer['Appointment-scheduled']);
+            $('#device-delivered').val(customer['Device_delivered']);
+            $('#device-recovered').val(customer['Device_recovered']);
+            $('#data-uploaded').val(customer['Data_uploaded']);
             var appointmentNotes = (appointment['notes'] !== null) 
                     ? appointment['notes'] : '';
             $('#notes').val(appointmentNotes);
@@ -583,9 +585,9 @@ var FrontendBook = {
                             + ' ' + EALang['minutes'] + '] ';
                 }
                 
-                if (service.price != '' && service.price != null) {
-                    html += '[' + EALang['price'] + ' ' + service.price + ' ' + service.currency  + ']';
-                }   
+                //if (service.price != '' && service.price != null) {
+                //    html += '[' + EALang['price'] + ' ' + service.price + ' ' + service.currency  + ']';
+                //}   
                 
                 html += '<br>';
                 

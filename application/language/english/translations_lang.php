@@ -272,3 +272,8 @@ $lang['could_not_add_to_google_calendar'] = 'Your appointment could not be added
 $lang['ea_update_success'] = 'Easy!Appointments has been successfully updated!';
 # added extra fields
 $lang['participant_id'] = 'Participant ID';
+$lang['Number_of_calls'] = 'Number of calls made';
+$lang['Appointment_scheduled'] = 'Has an appointment been scheduled?';
+$lang['Device_delivered'] = 'Date device delivered (e.g. 01/01/2015)';
+$lang['Device_recovered'] = 'Date device recovered (e.g. 01/01/2015)';
+$lang['Data_uploaded'] = 'Date data was uploaded to iMCD Systems';
