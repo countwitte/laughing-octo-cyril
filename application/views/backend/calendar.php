@@ -186,12 +186,7 @@
                     </div>
                 </div>
                 
-                <div class="control-group">
-                    <label for="end-datetime" class="control-label"><?php echo $this->lang->line('end_date_time'); ?></label>
-                    <div class="controls">
-                        <input type="text" id="end-datetime" />
-                    </div>
-                </div>
+                <input type="hidden" id="end-datetime" />
                 
                 <div class="control-group">
                     <label for="appointment-notes" class="control-label"><?php echo $this->lang->line('notes'); ?></label>

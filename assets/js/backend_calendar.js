@@ -512,8 +512,9 @@ var BackendCalendar = {
             
             var startDatetime = Date.parseExact($dialog.find('#start-datetime').val(),
                     'dd/MM/yyyy HH:mm').toString('yyyy-MM-dd HH:mm:ss');
-            var endDatetime = Date.parseExact($dialog.find('#end-datetime').val(),
-                    'dd/MM/yyyy HH:mm').toString('yyyy-MM-dd HH:mm:ss');
+            //var endDatetime = Date.parseExact($dialog.find('#end-datetime').val(),
+            //        'dd/MM/yyyy HH:mm').toString('yyyy-MM-dd HH:mm:ss');
+            var endDatetime = BackendCalendar.calcEndDatetime();
             
             var appointment = {
                 'id_services': $dialog.find('#select-service').val(),
@@ -1948,13 +1949,13 @@ var BackendCalendar = {
             //}
             
             // :: CHECK APPOINTMENT START AND END TIME
-            var start = Date.parseExact($('#start-datetime').val(), 'dd/MM/yyyy HH:mm');
-            var end = Date.parseExact($('#end-datetime').val(), 'dd/MM/yyyy HH:mm');
-            if (start > end) {
-                $dialog.find('#start-datetime').parents().eq(1).addClass('error');
-                $dialog.find('#end-datetime').parents().eq(1).addClass('error');
-                throw EALang['start_date_before_end_error'];
-            }
+            //var start = Date.parseExact($('#start-datetime').val(), 'dd/MM/yyyy HH:mm');
+            //var end = Date.parseExact($('#end-datetime').val(), 'dd/MM/yyyy HH:mm');
+            //if (start > end) {
+            //    $dialog.find('#start-datetime').parents().eq(1).addClass('error');
+            //    $dialog.find('#end-datetime').parents().eq(1).addClass('error');
+            //    throw EALang['start_date_before_end_error'];
+            //}
             
             return true;
         } catch(exc) {
@@ -2034,6 +2035,38 @@ var BackendCalendar = {
         
         // Clear the unavailable notes field.
         $dialog.find('#unavailable-notes').val('');
+    },
+    
+    /** 
+     * This method calculates the end datetime of the current appointment. 
+     * End datetime is depending on the service and start datetime fieldss.
+     * 
+     * @return {string} Returns the end datetime in string format.
+     */
+    calcEndDatetime: function() {
+    	var $dialog = $('#manage-appointment');
+        // Find selected service duration. 
+        var selServiceDuration = undefined;
+        
+        $.each(GlobalVariables.availableServices, function(index, service) {
+            if (service.id == $dialog.find('#select-service').val()) {
+                selServiceDuration = service.duration;
+                return false; // Stop searching ... 
+            }
+        });
+        
+        // Add the duration to the start datetime.
+        var startDatetime = Date.parseExact($dialog.find('#start-datetime').val(),
+        'dd/MM/yyyy HH:mm');
+        var endDatetime = undefined;
+        
+        if (selServiceDuration !== undefined && startDatetime !== null) {
+            endDatetime = startDatetime.add({ 'minutes' : parseInt(selServiceDuration) });
+        } else {
+            endDatetime = new Date();
+        }
+        
+        return endDatetime.toString('yyyy-MM-dd HH:mm:ss');
     },
            
     /**
