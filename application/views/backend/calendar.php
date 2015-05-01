@@ -187,7 +187,7 @@
                 </div>
                 
                 <div class="control-group">
-                    <label for="end-datetime" class="control-label"><?php echo $this->lang->line('start_date_time'); ?></label>
+                    <label for="end-datetime" class="control-label"><?php echo $this->lang->line('end_date_time'); ?></label>
                     <div class="controls">
                         <input type="text" id="end-datetime" />
                     </div>
@@ -222,6 +222,14 @@
                 
                 <div class="span5">
                     <div class="control-group">
+                        <label for="participant-id" class="control-label">
+                            <?php echo $this->lang->line('participant_id'); ?> *</label>
+                        <div class="controls">
+                            <input type="text" id="participant-id" class="required" />
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
                         <label for="first-name" class="control-label">
                             <?php echo $this->lang->line('first_name'); ?> *</label>
                         <div class="controls">
@@ -239,45 +247,54 @@
 
                     <div class="control-group">
                         <label for="email" class="control-label">
-                            <?php echo $this->lang->line('email'); ?>*</label>
+                            <?php echo $this->lang->line('email'); ?></label>
                         <div class="controls">
-                            <input type="text" id="email" class="required" />
+                            <input type="text" id="email" />
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label for="phone-number" class="control-label">
-                            <?php echo $this->lang->line('phone_number'); ?>*</label>
+                        <label for="number-of-calls" class="control-label">
+                            <?php echo $this->lang->line('Number_of_calls'); ?>*</label>
                         <div class="controls">
-                            <input type="text" id="phone-number" class="required" />
+                            <input type="text" id="number-of-calls" class="required" />
                         </div>
                     </div>
                 </div>
-                <div class="span6">
+                <div class="span7">
                     <div class="control-group">
-                        <label for="address" class="control-label">
-                            <?php echo $this->lang->line('address'); ?>
+                        <label for="appointment-scheduled" class="control-label">
+                            <?php echo $this->lang->line('Appointment_scheduled'); ?>
                         </label>
                         <div class="controls">
-                            <input type="text" id="address" />
+                            <input type="checkbox" id="appointment-scheduled" value="1" checked />
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label for="city" class="control-label">
-                            <?php echo $this->lang->line('city'); ?>
+                        <label for="device-delivered" class="control-label">
+                            <?php echo $this->lang->line('Device_delivered'); ?>
                         </label>
                         <div class="controls">
-                            <input type="text" id="city" />
+                            <input type="text" id="device-delivered" />
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label for="zip-code" class="control-label">
-                            <?php echo $this->lang->line('zip_code'); ?>
+                        <label for="device-recovered" class="control-label">
+                            <?php echo $this->lang->line('Device_recovered'); ?>
                         </label>
                         <div class="controls">
-                            <input type="text" id="zip-code" />
+                            <input type="text" id="device-recovered" />
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="data-uploaded" class="control-label">
+                            <?php echo $this->lang->line('Data_uploaded'); ?>
+                        </label>
+                        <div class="controls">
+                            <input type="text" id="data-uploaded" />
                         </div>
                     </div>
                     

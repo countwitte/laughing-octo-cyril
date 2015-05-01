@@ -180,13 +180,15 @@ var BackendCalendar = {
 
             var customer = appointment['customer'];
             $dialog.find('#customer-id').val(appointment['id_users_customer']);
+            $dialog.find('#participant-id').val(customer['participant_id']);
             $dialog.find('#first-name').val(customer['first_name']);
             $dialog.find('#last-name').val(customer['last_name']);
             $dialog.find('#email').val(customer['email']);
-            $dialog.find('#phone-number').val(customer['phone_number']);
-            $dialog.find('#address').val(customer['address']);
-            $dialog.find('#city').val(customer['city']);
-            $dialog.find('#zip-code').val(customer['zip_code']);
+            $dialog.find('#number-of-calls').val(customer['Number_of_calls']);
+            $dialog.find('#appointment-scheduled').val(customer['Appointment_scheduled']);
+            $dialog.find('#device-delivered').val(customer['Device_delivered']);
+            $dialog.find('#device-recovered').val(customer['Device_recovered']);
+            $dialog.find('#data-uploaded').val(customer['Data_uploaded']);
             $dialog.find('#appointment-notes').val(appointment['notes']);
             $dialog.find('#customer-notes').val(customer['notes']);
             
@@ -361,13 +363,15 @@ var BackendCalendar = {
 
                 var customer = appointment['customer'];
                 $dialog.find('#customer-id').val(appointment['id_users_customer']);
+                $dialog.find('#participant-id').val(customer['participant_id']);
                 $dialog.find('#first-name').val(customer['first_name']);
                 $dialog.find('#last-name').val(customer['last_name']);
                 $dialog.find('#email').val(customer['email']);
-                $dialog.find('#phone-number').val(customer['phone_number']);
-                $dialog.find('#address').val(customer['address']);
-                $dialog.find('#city').val(customer['city']);
-                $dialog.find('#zip-code').val(customer['zip_code']);
+                $dialog.find('#number-of-calls').val(customer['Number_of_calls']);
+                $dialog.find('#appointment-scheduled').val(customer['Appointment_scheduled']);
+                $dialog.find('#device-delivered').val(customer['Device_delivered']);
+                $dialog.find('#device-recovered').val(customer['Device_recovered']);
+                $dialog.find('#data-uploaded').val(customer['Data_uploaded']);
                 $dialog.find('#appointment-notes').val(appointment['notes']);
                 $dialog.find('#customer-notes').val(customer['notes']);
             } else {
@@ -526,13 +530,15 @@ var BackendCalendar = {
             }
             
             var customer = {
-                'first_name': $dialog.find('#first-name').val(),
+            	'participant_id': $dialog.find('#participant-id').val(),
+            	'first_name': $dialog.find('#first-name').val(),
                 'last_name': $dialog.find('#last-name').val(),
                 'email': $dialog.find('#email').val(),
-                'phone_number': $dialog.find('#phone-number').val(),
-                'address': $dialog.find('#address').val(),
-                'city': $dialog.find('#city').val(),
-                'zip_code': $dialog.find('#zip-code').val(),
+                'Number_of_calls': $dialog.find('#number-of-calls').val(),
+                'Appointment_scheduled': $dialog.find('#appointment-scheduled').val(),
+                'Device_delivered': $dialog.find('#device-delivered').val(),
+                'Device_recovered': $dialog.find('#device-recovered').val(),
+                'Data_uploaded': $dialog.find('#data-uploaded').val(),
                 'notes': $dialog.find('#customer-notes').val()
             };
             
@@ -875,13 +881,15 @@ var BackendCalendar = {
             $.each(GlobalVariables.customers, function(index, c) {
                 if (c.id == id) {
                     $('#customer-id').val(c.id);
+                    $('#participant-id').val(c.participant_id);
                     $('#first-name').val(c.first_name);
                     $('#last-name').val(c.last_name);
                     $('#email').val(c.email);
-                    $('#phone-number').val(c.phone_number);
-                    $('#address').val(c.address);
-                    $('#city').val(c.city);
-                    $('#zip-code').val(c.zip_code);
+                    $('#number-of-calls').val(c.Number_of_calls);
+                    $('#appointment-scheduled').val(c.Appointment_scheduled);
+                    $('#device-delivered').val(c.Device_delivered);
+                    $('#device-recovered').val(c.Device_recovered);
+                    $('#data-uploaded').val(c.Data_uploaded);
                     $('#customer-notes').val(c.notes);
                     return false;
                 }
@@ -899,12 +907,7 @@ var BackendCalendar = {
             $list.empty();
             $.each(GlobalVariables.customers, function(index, c) {
                 if (c.first_name.toLowerCase().indexOf(key) != -1 
-                        || c.last_name.toLowerCase().indexOf(key) != -1
-                        || c.email.toLowerCase().indexOf(key) != -1
-                        || c.phone_number.toLowerCase().indexOf(key) != -1
-                        || c.address.toLowerCase().indexOf(key) != -1
-                        || c.city.toLowerCase().indexOf(key) != -1
-                        || c.zip_code.toLowerCase().indexOf(key) != -1) {
+                        || c.last_name.toLowerCase().indexOf(key) != -1) {
                     $list.append('<div data-id="' + c.id + '">' 
                             + c.first_name + ' ' + c.last_name + '</div>');
                 }
@@ -939,8 +942,9 @@ var BackendCalendar = {
          * Event: Enter New Customer Button "Click"
          */
         $('#new-customer').click(function() {
-            $('#manage-appointment').find('#customer-id, #first-name, #last-name, #email, '
-                    + '#phone-number, #address, #city, #zip-code, #customer-notes').val('');
+            $('#manage-appointment').find('#customer-id, #participant-id, #first-name, #last-name, #email, '
+                    + '#number-of-calls, #appointment-scheduled, #device-delivered, #device-recovered, '
+                    + '#data-uploaded, #customer-notes').val('');
         });
         
         /**
@@ -1938,10 +1942,10 @@ var BackendCalendar = {
             }
              
             // :: CHECK EMAIL ADDRESS
-            if (!GeneralFunctions.validateEmail($dialog.find('#email').val())) {
-                $dialog.find('#email').parents().eq(1).addClass('error');
-                throw EALang['invalid_email'];
-            }
+            //if (!GeneralFunctions.validateEmail($dialog.find('#email').val())) {
+            //    $dialog.find('#email').parents().eq(1).addClass('error');
+            //    throw EALang['invalid_email'];
+            //}
             
             // :: CHECK APPOINTMENT START AND END TIME
             var start = Date.parseExact($('#start-datetime').val(), 'dd/MM/yyyy HH:mm');

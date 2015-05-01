@@ -411,7 +411,7 @@ var FrontendBook = {
         }
 
         var selServiceId = $('#select-service').val();
-        var servicePrice, serviceCurrency;
+        var servicePrice, serviceCurrency, serviceCategory;
         $.each(GlobalVariables.availableServices, function(index, service) {
             if (service.id == selServiceId) {
                 servicePrice = '<br>' + service.price;
